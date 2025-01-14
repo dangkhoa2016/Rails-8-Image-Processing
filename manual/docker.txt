@@ -1,0 +1,15 @@
+
+docker logs image-processing
+docker build -t image-processing .
+
+
+docker run -it --rm --user root image-processing bash
+
+run the image:
+docker run -it --rm image-processing:latest bash
+
+./bin/thrust ./bin/rails server
+
+docker run -p 4000:80 -e RAILS_MASTER_KEY=$(cat config/master.key) --name image-processing image-processing
+docker run -d -p 4000:80 -e RAILS_MASTER_KEY=$(cat config/master.key) --name image-processing image-processing
+
