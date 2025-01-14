@@ -1,6 +1,6 @@
 # ImageProcessing
 
-Welcome to the ImageProcessing project! This project is built using Rails v8 and utilizes the `ruby-vips` gem for efficient and high-performance image processing.
+Welcome to the ImageProcessing project! This project is built using Rails v8 and utilizes the `rmagick` gem for efficient and high-performance image processing.
 
 ## Getting Started
 
@@ -18,10 +18,10 @@ Make sure you have the following installed:
 
 1. Install the required library
 
-    Before using the image processing features, ensure that you have `libvips` installed on your system. For installation instructions, visit the official [libvips installation page](https://libvips.github.io/libvips/install.html).
+    Before using the image processing features, ensure that you have `ImageMagick` installed on your system. For installation instructions, visit the official [rmagick installation page](https://github.com/rmagick/rmagick).
 
     ```bash
-    sudo apt update && sudo apt install libvips
+    sudo apt update && sudo apt install libmagickwand-dev -y
     ```
 
 2. Clone the repository:
@@ -46,12 +46,12 @@ Make sure you have the following installed:
 later
 ### Usage
 
-To use the `ruby-vips` gem for image processing in your Rails application, follow these steps:
+To use the `rmagick` gem for image processing in your Rails application, follow these steps:
 
-1. Add the `ruby-vips` gem to your Gemfile:
+1. Add the `rmagick` gem to your Gemfile:
 
     ```ruby
-    gem 'ruby-vips'
+    gem 'rmagick'
     ```
 
 2. Run `bundle install` to install the gem.

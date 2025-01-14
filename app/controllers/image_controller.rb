@@ -53,7 +53,7 @@ class ImageController < ApplicationController
     # Download the image from the URL
     begin
       response = Faraday.get(url)  # Download the image from the URL
-      image = Vips::Image.new_from_buffer(response.body, "")  # Create an image object from the buffer
+      image = Magick::Image.from_blob(response.body).first  # Create an image object from the buffer
 
       # Loop through query string parameters and apply corresponding operations
       image = apply_image_transformations(image, request.query_parameters)
@@ -64,10 +64,10 @@ class ImageController < ApplicationController
         image_format = response.headers["content-type"].split("/").last || "jpg" # Get the image format from the content-type header
       end
 
-      image_buffer = image.write_to_buffer(".#{image_format}")
+      image.format = image_format
 
       # Return the image as binary data (image/jpeg)
-      send_data image_buffer, type: "image/#{image_format}", disposition: "inline"
+      send_data image.to_blob, type: "image/#{image_format}", disposition: "inline"
 
     rescue => e
       render json: { error: I18n.translate("errors.failed_to_process_image", message: e.message) }, status: :unprocessable_entity
