@@ -47,3 +47,6 @@ group :development, :test do
 end
 
 
+
+gem "ruby-vips", "~> 2.2"
+gem "faraday", "~> 2.12"
