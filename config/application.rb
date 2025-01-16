@@ -1,9 +1,10 @@
+require_relative "../lib/exception_middleware"
 require_relative "boot"
-
 require "rails/all"
+require "dotenv/load" if Rails.env.development? || Rails.env.test?
 
 # Require the gems listed in Gemfile, including any gems
-# you've limited to :test, :development, or :production.
+# you"ve limited to :test, :development, or :production.
 Bundler.require(*Rails.groups)
 
 module ImageProcessing
@@ -28,5 +29,6 @@ module ImageProcessing
     # Middleware like session, flash, cookies can be added back manually.
     # Skip views, helpers and assets when generating a new resource.
     config.api_only = true
+    config.middleware.use ::ExceptionMiddleware
   end
 end

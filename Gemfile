@@ -50,3 +50,7 @@ end
 
 gem "ruby-vips", "~> 2.2"
 gem "faraday", "~> 2.12"
+
+gem "devise", "~> 4.9"
+
+gem "devise-jwt", "~> 0.12.1"

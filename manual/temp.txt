@@ -1,11 +1,13 @@
+config/master.key: c8beba49b39f43649de841fec71e0116
 
-rails generate controller Image index
+config/credentials.yml.enc is encrypted with the master key
+
+
+rails generate devise User
+rails generate controller User
 rails generate controller Home index
 
 ----
-
-master.key is c8beba49b39f43649de841fec71e0116
-config/credentials.yml.enc is encrypted with the master key
 
 
 production RAILS_ENV="production" bin/rails c
@@ -22,14 +24,13 @@ Rails. application. credentials. key_path
 => #<Pathname:/config/master.key> 
 
 Rails. application. credentials. config
-{ :secret_key_base=> "zzz" }
+{ :secret_key_base=> "zzz", devise_jwt_secret_key=> "zzz" }
 
 Rails. application. credentials. key
 => "zzz"
 
 
 ----
-
 
 RAILS_ENV="production" bin/rails credentials:show
 VISUAL="code --wait" RAILS_ENV="production" bin/rails credentials:edit
