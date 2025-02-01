@@ -7,6 +7,8 @@
 # /image?url=https://.....png&sharpen[sigma]=0.5&sharpen[x1]=0.8&shrink[]=5&shrink[]=5&shrink[][xshrink]=50
 
 class ImageController < ApplicationController
+  before_action :authorize_request
+
   # GET /index
   def index
     # Get image URL from query string
